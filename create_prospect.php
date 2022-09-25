@@ -188,7 +188,7 @@ color: #fff !important;
     <div id="breadcrumb">
       <ul class="breadcrumb">
         <li><i class="fa fa-home"></i> <a href="dashboard.php"> HOME</a></li>
-        <li><img style="width: 20px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; border-radius: 50%;" src="img/Prospects 3.png"  /> <a href="leads.php"> Prospects</a></li>
+        <li><img style="width: 20px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; border-radius: 50%;" src="icons/Prospects 3.png"  /> <a href="leads.php"> Prospects</a></li>
         <li class="active">Create New Prospects</li>
       </ul>
     </div>
@@ -197,7 +197,7 @@ color: #fff !important;
     <div class="">
      <div class="panel panel-default">
       <form class="no-margin" id="formValidate2" data-validate="parsley" method="post" action="get_prospects.php" name="client_record" enctype="multipart/form-data" novalidate>
-        <div class="panel-heading"><img style="width: 44px; margin-top: -10px; margin-bottom: -10px;" src="img/Prospects 1.png"  /> CREATE NEW PROSPECTS<span><a href="leads.php">Cancel</a></span></div>
+        <div class="panel-heading"><img style="width: 44px; margin-top: -10px; margin-bottom: -10px;" src="icons/Prospects 1.png"  /> CREATE NEW PROSPECTS<span><a href="leads.php">Cancel</a></span></div>
         <div class="col-md-6 col-md-offset-3">
         <?php if(isset($_GET['s'])){
 
@@ -467,9 +467,9 @@ function calculate(t){
           <div class="col-md-12"> 
           <div class="panel-tab clearfix">
 								<ul class="tab-bar">
-									<li class="active"><a href="#Auto" onclick='auto()' id="btn1" data-toggle="tab"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="img/New Icons/Car.png"  />  Auto</a></li>
+									<li class="active"><a href="#Auto" onclick='auto()' id="btn1" data-toggle="tab"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="icons/New Icons/Car.png"  />  Auto</a></li>
 									<li><a href="#Home" data-toggle="tab" onclick='home()' id="btn_home"><i style="font-size: 19px;" class="fa fa-home"></i>  Home</a></li>
-									<li><a href="#Enterprise" data-toggle="tab" onclick='note()' id="btn_note"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="img/New Icons/Enterprise.png"  />  Enterprise</a></li>
+									<li><a href="#Enterprise" data-toggle="tab" onclick='note()' id="btn_note"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="icons/New Icons/Enterprise.png"  />  Enterprise</a></li>
 								</ul>
 							</div>
 							<div class="panel-body" style="border: 1px solid rgb(191, 191, 191);">
@@ -889,10 +889,10 @@ function calculate(t){
        
        <div class="panel-tab clearfix">
 								<ul class="tab-bar">
-									<li class="active"><a href="#profile1" id="btn2" onclick='auto1()' data-toggle="tab"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="img/New Icons/Car.png"  /> AUTO</a></li>
+									<li class="active"><a href="#profile1" id="btn2" onclick='auto1()' data-toggle="tab"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="icons/New Icons/Car.png"  /> AUTO</a></li>
 									<li><a href="#message1" data-toggle="tab" onclick='home1()' id="btn_home1"><i style="font-size: 19px;" class="fa fa-home"></i> HOME</a></li>
-                                    <li ><a  href="#enter"  data-toggle="tab"  onclick='note1()' id="btn_note1"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="img/New Icons/Enterprise.png"  /> Enterprise</a></li>
-									<li ><a  href="#home1"  data-toggle="tab" ><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="img/New Icons/Notes.png"  /> NOTES</a></li>
+                                    <li ><a  href="#enter"  data-toggle="tab"  onclick='note1()' id="btn_note1"><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="icons/New Icons/Enterprise.png"  /> Enterprise</a></li>
+									<li ><a  href="#home1"  data-toggle="tab" ><img style="width: 35px; margin-top: -10px; margin-bottom: -10px;" src="icons/New Icons/Notes.png"  /> NOTES</a></li>
 
 								</ul>
 							</div>

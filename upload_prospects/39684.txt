@@ -1,0 +1,187 @@
+********************************************************CINI***********************************************************************************************************
+
+http://conservationimpact.com/clients/
+http://cini.staging.wpengine.com/wp-admin/
+username: cini
+password: cini.staging123$@
+
+sampan
+wMzv&ZNYVqyCgPHPeQ58v8L4
+ 
+sftp://45.79.175.178
+cini-staging
+Cherrycreek1!
+
+2222sftp://45.79.175.178
+cini-RyanLive
+mjQ3e&7gW9)K(pvh
+2222
+
+ https://wpengine.com/
+username: collaborate.ryandesign@gmail.com
+password: ThanksSampan1!
+
+
+<------------------CRM DEtail----------------------------->
+ Smarterasp.net
+
+Login Username: Processcolor
+Login Password: Order2015
+
+FTP Address : FTP.SMARTERASP.NET
+FTP Username : processcolor-001
+FTP Password : (same as your control panel password)
+DW-AHU-01 is the new password for SmarterASP
+http://processcolor-001-site1.atempurl.com/CRM/wp-admin/Work_Order_Print.php
+user name= admin
+password= crm!@#
+
+<-------------------------------crm end detal------------------------------>
+
+
+http://thecodeplayer.com/
+http://iamceege.github.io/tooltipster/
+
+http://www.plus2net.com/sql_tutorial/date-lastweek.php
+
+http://phppot.com/jquery/jquery-div-auto-load-and-refresh/
+
+http://www.codeproject.com/Articles/2315/The-alxBase-classes-for-work-with-DBF-files
+
+load data infile 'd:/data.txt' into table tbl_data fields termination by '#' lines terminated by '\r\n'
+
+***********************************************************************************************************************************************************************
+http://responsivedesignsimulator.com/
+https://www.browserstack.com/responsive
+
+http://processcolor-001-site1.atempurl.com/CRM/wp-content/plugins/legacy-admin/images/login-bg.png
+
+****************Axovel************************************
+
+http://www.axovel.com:2082/
+Username: axovelco
+Password:  Axovel@942#@!$
+
+**************************************************************
+http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tr_get
+
+http://pengbos.com/blog/how-to-create-a-multi-language-wordpress-site
+
+
+
+update wp_options set option_value=replace(option_value,'http://jaisainath.com/virtuem/kunnda','http://kuunda.com')
+
+db_name:np1admin_new
+
+
+username:np1admin_new
+pasword:np1@123
+
+
+
+http://www.freshdesignweb.com/css3-buttons.html
+
+*************************netprime***************
+
+URL: https://backstage.site5.com
+Email: netprime@rogers.com
+Password: xQovc9Dg1Uzd
+wp-user: admin
+wp-pass: mantra@2010
+
+*************************netprime***************
+
+http://www.bgmduniya.in/2015/02/2-many-girls-hd-video-song-free-download-punjabi.html
+
+http://localhost/cellphone/wp-content/plugins/erident-custom-login-and-dashboard/images/top_bg.jpg
+
+*************************likecongo***************
+
+https://p3plcpnl0299.prod.phx3.secureserver.net:2083/logout/?locale=en
+[3/2/2015 1:18:36 PM] Nitesh Dhyani: user:likecongo
+[3/2/2015 1:18:41 PM] sanjay bhatt: thaxx
+[3/2/2015 1:18:50 PM] Nitesh Dhyani: pass:30juiN!960
+
+*************************likecongo***************
+
+
+
+
+*******************************Begio Host*****************************
+www.bluehost.com
+Account ID: begiowatches.com
+Code: RGBsohkjazzie720**
+**********************************************************************
+
+
+https://css-tricks.com/html-invoice/
+
+
+******************************* Onlinebus Host*****************************
+Hosting place godaddy.com
+User: 95818049
+Password Facile2020
+
+
+**********************************************************************
+begio_details-----------
+db: begiowat_begio
+user: begiowat_admin
+pass: begiowat@123
+
+-------------------------------------ftp_begio-----------------------------
+host:ftp.begiowatches.com
+[5/21/2015 7:10:22 PM] Nitesh Dhyani: user:nitesh@begiowatches.com
+[5/21/2015 7:10:48 PM] Nitesh Dhyani: ftp-password:hQ$)DJB#O[mn
+
+wordpress login;;;;;;;
+user:admin
+pass:begio@123
+---------------------------------------------------------------------------
+
+ http://tricityluggage.com/
+
+**********************************************************************************************************************************
+Keep getting “MySQL server has gone away” errors during command line importthe wrong places and please send me the original coding
+**********************************************************************************************************************************
+
+
+Now solved in my.ini:
+
+[wampmysqld]
+port        = 3306
+socket      = /tmp/mysql.sock
+key_buffer = 384M
+--------------------------
+max_allowed_packet = 100M
+--------------------------
+table_cache = 4096
+sort_buffer_size = 2M
+net_buffer_length = 2M
+read_buffer_size = 2M
+read_rnd_buffer_size = 64M
+myisam_sort_buffer_size = 64M
+basedir=c:/wamp/bin/mysql/mysql5.1.36
+log-error=c:/wamp/logs/mysql.log
+datadir=c:/wamp/bin/mysql/mysql5.1.36/data
+thread_cache_size = 8
+query_cache_size = 32M
+
+************************************************************************************************************************************
+
+https://developers.google.com/speed/pagespeed/insights/
+
+http://webthemez.com/demo/easy-responsive-tabs/Index.html#parentHorizontalTab1|ChildVerticalTab_14
+
+https://www.designmaz.net/create-awesome-responsive-css3-tabs/
+
+ Celkon 3.5inch (8.89cms) Android KitKat Phone - CAMPUS A354C-White(Product code):#32870645
+
+
+Product Code	        33000495
+Product Category	Mobiles
+Brand	                Celkon
+
+
+foryou123!@#
+foryou123!

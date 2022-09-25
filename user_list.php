@@ -97,7 +97,7 @@ ob_flush();
       
       <div class="main-menu">
         <ul>
-          <li > <a href="dashboard.php"> <span class="menu-icon"> <img style="margin-left: -10px; margin-right: -10px; width: 36px;" src="img/Dashboard.png"  /> </span> <span class="text"> Dashboard </span> <span class="menu-hover"></span> </a> </li>
+          <li > <a href="dashboard.php"> <span class="menu-icon"> <img style="margin-left: -10px; margin-right: -10px; width: 36px;" src="icons/Dashboard.png"  /> </span> <span class="text"> Dashboard </span> <span class="menu-hover"></span> </a> </li>
            <?php
 if (in_array("Users Management", $permission))
 {

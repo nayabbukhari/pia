@@ -1,29 +1,14 @@
 <?php
-ob_start();
-if(isset($_REQUEST[session_name()])) {
-    // There is a session already available
-  }else{
-    //session_name('crc');
-    //session_start();   
-    //include("connection.php");
- }
-ob_flush();
-//include("connection.php");
-$user=$_SESSION['user'];
-$users=get_record_sql("select * from pia_login where email='$user'");
-
-echo    '<!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-	
-	<!-- Endless -->
-	<link href="css/merge.css" rel="stylesheet">
-    
-    <div id="top-nav" class="fixed skin-6"> <a href="#" style="width:194px;" class="brand"><span class="text-toggle"><img style="padding: 10px;" src="img/Probatio-Large.png" width="60%" height="Auto"></span></a><!-- /brand -->
+session_start();
+include("connection.php");
+ $user=$_SESSION['user'];
+ $query = mysqli_query($con,"select * from pia_login where email='".$user."'") ;
+				while($row = mysqli_fetch_array($query) ) {
+?>
+<div id="top-nav" class="fixed skin-6"> <a href="#" style="width:194px;" class="brand"><span class="text-toggle"><img style="padding: 10px;" src="img/Probatio-Logos-3b copy.png" width="122px" height="50px"></span></a><!-- /brand -->
     <button type="button" class="navbar-toggle pull-left" id="sidebarToggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
     <button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-    <a href="dashboard.php" class="brand"> <span>Probatio Insurance Application</span> </a><!-- /brand -->
+    <a href="#" class="brand"> <span>Probatio Insurance Application</span> </a><!-- /brand -->
     
     <ul class="nav-notification clearfix">
       <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-envelope fa-lg"></i> <span class="notification-label bounceIn animation-delay4">7</span> </a>
@@ -93,26 +78,28 @@ echo    '<!-- Bootstrap core CSS -->
           <li><a href="#">View all notifications</a></li>
         </ul>
       </li>
-        <li class="profile dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <strong>';
-echo    $users[0]->username;
-echo    '</strong> <span><i class="fa fa-chevron-down"></i></span> </a>
+      <li class="profile dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <strong><?php echo $row['username']; ?></strong> <span><i class="fa fa-chevron-down"></i></span> </a>
         <ul class="dropdown-menu">
-        <li> <a class="clearfix" href="#"> <img src="';
-echo    $users[0]->path; 
-echo    '"alt="User Avatar">
-        <div class="detail"> <strong>';
-echo    $users[0]->username;
-echo    '</strong><span style="color: rgb(21, 126, 183);">&nbsp;&nbsp;(';
-echo    $users[0]->role; 
-echo    ')</span><p class="grey">';
-echo    $users[0]->email;
-echo    '</p></div></a></li>
-        <li><a tabindex="-1" href="profile.php" class="main-link"><i class="fa fa-edit fa-lg"></i> My profile</a></li>
-        <li><a tabindex="-1" href="user_list.php" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Setting</a></li>
-        <li class="divider"></li>
-        <li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i>Log out</a></li>
+          <li> <a class="clearfix" href="#"> <img src="<?php echo $row['path']; ?>" alt="User Avatar">
+            <div class="detail"> <strong><?php echo $row['username']; ?></strong><span style="color: rgb(21, 126, 183);">&nbsp;&nbsp;(<?php echo $row['role']; ?>)</span>
+              <p class="grey"><?php echo $row['email']; ?></p>
+            </div>
+            </a> </li>
+          <li><a tabindex="-1" href="profile.php" class="main-link"><i class="fa fa-edit fa-lg"></i> My profile</a></li>
+          <li><a tabindex="-1" href="user_list.php" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Setting</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" class="main-link logoutConfirm_open" href="#logoutConfirm"><i class="fa fa-lock fa-lg"></i> Log out</a></li>
         </ul>
       </li>
     </ul>
-  </div>';
- ?>
+  </div>
+  <?php
+  }
+  ?>
+  <style>
+  table.dataTable thead th {
+    padding: 3px 0px 10px 10px !important;
+    cursor: pointer;
+    *cursor: hand;
+}
+</style>

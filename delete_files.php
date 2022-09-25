@@ -1,22 +1,9 @@
 <?php
-if(isset($_REQUEST[session_name()])){
-    // There is a session already available
-  }else{
-    //session_name('crc');
-    session_start();   
-    include("connection.php");
- }
-if(isset($_SESSION['user'])){
-    $user=$_SESSION['user'];
-    $role=$_SESSION['role'];
-    $id=$_GET['id'];
-}else{
-    header("location:index.php");
-}
 ob_start();
+include("connection.php");
+$sql=mysqli_query($con,"delete from pia_files where id='".$_GET['id']."'");
 
-executes("delete from pia_files where id='$id'");
-//echo "delete from pia_leads where id='".$_GET['id']."'";
+echo "delete from pia_leads where id='".$_GET['id']."'";
 
 header("location:files.php?s=2");
 exit();

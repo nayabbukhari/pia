@@ -1,103 +1,128 @@
 <?php
 ob_start();
-if(isset($_REQUEST[session_name()])) {
-    // There is a session already available
-  }else{
-    //session_name('crc');
-    session_start();   
- }
-if(isset($_SESSION['user'])){
-    $user=$_SESSION['user'];
-    $role=$_SESSION['role'];
-}else{
-    header("location:index.php");
+session_start();
+$user=$_SESSION['user'];
+if(!isset($user))
+{
+header("location:index.php");
 }
-
 include("connection.php");
+$query = mysqli_query($con,"select * from pia_login where email='".$user."'") ;
+				while($row = mysqli_fetch_array($query) ) 
+				
+				{
+				$permissions=$row['permissions'];
+               $permission = explode(',',$permissions);
 
-$users=get_record_sql("select * from pia_login where email='$user'");
-//var_dump($user);
-$permissions=$users[0]->permissions;
-$permission = explode(',',$permissions);
-//var_dump($permission);
-if(!in_array("Dashboard", $permission)){
-    header("location:error404.html");   //echo "Match not found";
+if (in_array("Dashboard", $permission))
+{
+//echo "Match found";
+}
+else
+{
+header("location:error404.html");
+//echo "Match not found";
+
+}
 }
 ob_flush();
-echo    '<head><title>Probatio Admin</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <!-- Pace -->
-        <!-- Color box -->
-        <link href="css/colorbox/colorbox.css" rel="stylesheet">
-        <link href="css/merge.css" rel="stylesheet">
-        </head>
+?>
+<!DOCTYPE html>
+<html lang="en">
 
-        <body class="overflow-hidden">
-        <!-- Overlay Div -->
-        <!--___________________________overlay_________________________-->';
-        include("overlay.php");
-echo   '<!--___________________________.overlay________________________-->
-        <!-- /theme-setting -->
-        <div id="wrapper" class="preload">
-        <!--___________________________topbar_________________________-->';
-        include("topbar.php");
-echo    '<!--___________________________.topbar________________________-->
-        <!-- /top-nav-->
-        <!--___________________________left sidebar_________________________-->';
-        include("leftsidebar.php");
-echo    '<!--___________________________.left sidebar________________________-->
-        <div id="main-container">
-        <div id="breadcrumb">
-        <ul class="breadcrumb">
-        <br /><br />
+<!-- Mirrored from minetheme.com/Endless1.5.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Oct 2015 08:16:52 GMT -->
+<head>
+<meta charset="utf-8">
+<title>Probatio Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Bootstrap core CSS -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Pace -->
+
+<!-- Color box -->
+<link href="css/colorbox/colorbox.css" rel="stylesheet">
+
+	<link href="css/merge.css" rel="stylesheet">
+
+</head>
+<style>
+#last {
+    display: none !important;
+}</style>
+<body class="overflow-hidden">
+<!-- Overlay Div -->
+  <!--___________________________overlay_________________________-->
+  <?php include("overlay.php"); ?>
+  <!--___________________________.overlay________________________-->
+
+
+<!-- /theme-setting -->
+
+<div id="wrapper" class="preload">
+  <!--___________________________topbar_________________________-->
+  <?php include("topbar.php"); ?>
+  <!--___________________________.topbar________________________-->
+  
+  <!-- /top-nav-->
+  
+  <!--___________________________left sidebar_________________________-->
+  <?php include("leftsidebar.php"); ?>
+  <!--___________________________.left sidebar________________________-->
+  
+  <div id="main-container">
+    <div id="breadcrumb">
+      <ul class="breadcrumb">
         <li><i class="fa fa-home"></i><a href="index.html"> Home</a></li>
         <li class="active">Dashboard</li>
       </ul>
     </div>
     <!-- /breadcrumb--><!-- /main-header -->
     
-    <div class="grey-container shortcut-wrapper"> <a href="#" class="shortcut-link"><span class="shortcut-icon"> <i class="fa fa-bar-chart-o"></i> </span> <span class="text">Statistic</span> </a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-envelope-o"></i> <span class="shortcut-alert"> 5 </span> </span> <span class="text">Messages</span> </a> <a href="add_user.php" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-user"></i> </span> <span class="text">New Users</span></a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-globe"></i> <span class="shortcut-alert"> 7 </span> </span> <span class="text">Notification</span> </a> <a href="activities.php" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-list"></i> </span> <span class="text">Activity</span> </a> <a href="profile.php" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-cog"></i></span> <span class="text">Setting</span> </a> </div>
+    <div class="grey-container shortcut-wrapper"> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-bar-chart-o"></i> </span> <span class="text">Statistic</span> </a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-envelope-o"></i> <span class="shortcut-alert"> 5 </span> </span> <span class="text">Messages</span> </a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-user"></i> </span> <span class="text">New Users</span> </a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-globe"></i> <span class="shortcut-alert"> 7 </span> </span> <span class="text">Notification</span> </a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-list"></i> </span> <span class="text">Activity</span> </a> <a href="#" class="shortcut-link"> <span class="shortcut-icon"> <i class="fa fa-cog"></i></span> <span class="text">Setting</span> </a> </div>
     <!-- /grey-container -->
     
     <div class="padding-md">
-      <div class="row">';
-                //include("connection.php");
-                $cnt=get_record_sql("select count(*) AS supervisor from pia_login where role='SUPERVISORS'");
-/*
+      <div class="row">
+      
+				<?php
+                include("connection.php");
                 $_result1=mysqli_query($con,"select count(*) from pia_login where role='SUPERVISORS'");
                 while($row=mysqli_fetch_array($_result1))
                 {
                 $cnt=$row[0];
                 }
-                */
-                //var_dump($cnt);
-    
-echo        '<div class="col-sm-6 col-md-3">
-            <div class="panel-stat3 bg-danger">
-            <h2 class="m-top-none" id="">';
-echo        $cnt[0]->supervisor;
-echo        '</h2>
+                ?>
+      
+        <div class="col-sm-6 col-md-3">
+          <div class="panel-stat3 bg-danger">
+            <h2 class="m-top-none" id=""><?php echo $cnt; ?></h2>
             <h5>SUPERVISORS</h5>
             <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs"></span>
             <div class="stat-icon"> <i class="fa fa-user fa-3x"></i> </div>
             <div class="refresh-button"> <i class="fa fa-refresh"></i> </div>
             <div class="loading-overlay"> <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i> </div>
           </div>
-        </div>';
+        </div>
         
-        $cnt=get_record_sql("select count(*) AS agent from pia_login where role='AGENTS'");
-echo    '<!-- /.col -->
+            <?php
+                $_result21=mysqli_query($con,"select count(*) from pia_login where role='AGENTS'");
+                while($row=mysqli_fetch_array($_result21))
+                {
+                $cnt1=$row[0];
+                }
+                ?>
+      
+        
+        <!-- /.col -->
         <div class="col-sm-6 col-md-3">
           <div class="panel-stat3 bg-info">
-            <h2 class="m-top-none"><span id="serverloadCount">';
-echo        $cnt[0]->agent; 
-echo        '</span></h2>
+            <h2 class="m-top-none"><span id="serverloadCount"><?php echo $cnt1; ?></span></h2>
             <h5>AGENTS</h5>
             <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs"></span>
             <div class="stat-icon"> <i class="fa fa-users fa-3x"></i> </div>
@@ -105,13 +130,14 @@ echo        '</span></h2>
             <div class="loading-overlay"> <i class="loading-icon fa fa-refresh fa-spin fa-lg"></i> </div>
           </div>
         </div>
-        <!-- /.col -->';
-
-        $cnt=get_record_sql("select count(*) AS customer from pia_login where role='customer'");
-echo    '<div class="col-sm-6 col-md-3">
-          <div class="panel-stat3 bg-warning">';
-echo        $cnt[0]->customer;             
-echo        '<h2 class="m-top-none" id="orderCount">12</h2>
+        <!-- /.col -->
+        
+    
+        
+        
+        <div class="col-sm-6 col-md-3">
+          <div class="panel-stat3 bg-warning">
+            <h2 class="m-top-none" id="orderCount">12</h2>
             <h5>Customers</h5>
             <i class="fa fa-arrow-circle-o-up fa-lg"></i><span class="m-left-xs"></span>
             <div class="stat-icon"> <i class="fa fa-shopping-cart fa-3x"></i> </div>
@@ -282,10 +308,11 @@ echo        '<h2 class="m-top-none" id="orderCount">12</h2>
     <!-- /.padding-md --> 
   </div>
   <!-- /main-container --> 
-  <!-- Footer================================================== -->
-  <!--____________________footer___________________________-->';
-  include("footer.php");
-echo  '<!--____________________footer___________________________--> 
+  <!-- Footer
+        ================================================== -->
+  <!--____________________footer___________________________-->
+  <?php include("footer.php"); ?>
+  <!--____________________footer___________________________--> 
   <!--Modal-->
   <div class="modal fade" id="newFolder">
     <div class="modal-dialog">
@@ -313,46 +340,50 @@ echo  '<!--____________________footer___________________________-->
   <!-- /.modal --> 
 </div>
 <!-- /wrapper --> 
-<a href="#" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
-<!-- Logout confirmation -->
-<!-- Le javascript ================================================== --> 
-<!--  ================================================== --> 
-<!-- Placed at the end of the document so the pages load faster -->
+
+<a href="#" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a> 
+
+  <!--  ================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
 
 <!-- Jquery --> 
 <script src="js/jquery-1.10.2.min.js"></script> 
+
 <!-- Bootstrap --> 
 <script src="bootstrap/js/bootstrap.js"></script> 
-<!-- Flot --> 
-<script src="js/jquery.flot.min.js"></script>
 
-<!-- Datatable -->     
-<script src="js/jquery.dataTables.min.js"></script>	
-<!-- Modernizr -->
-<script src="js/modernizr.min.js"></script>
-<!-- Pace -->
-<script src="js/pace.min.js"></script>
-<!-- Endless -->
-<script src="js/endless/endless.js"></script>
+<!-- Flot --> 
+<script src='js/jquery.flot.min.js'></script> 
+
 <!-- Morris --> 
-<script src="js/rapheal.min.js"></script> 
-<script src="js/morris.min.js"></script> 
+<script src='js/rapheal.min.js'></script> 
+<script src='js/morris.min.js'></script> 
+
 <!-- Colorbox --> 
-<script src="js/jquery.colorbox.min.js"></script> 
+<script src='js/jquery.colorbox.min.js'></script> 
+
 <!-- Sparkline --> 
-<script src="js/jquery.sparkline.min.js"></script> 
+<script src='js/jquery.sparkline.min.js'></script> 
+
 <!-- Pace --> 
-<script src="js/uncompressed/pace.js"></script> 
+<script src='js/uncompressed/pace.js'></script> 
+
 <!-- Popup Overlay --> 
-<script src="js/jquery.popupoverlay.min.js"></script> 
+<script src='js/jquery.popupoverlay.min.js'></script> 
+
 <!-- Slimscroll --> 
-<script src="js/jquery.slimscroll.min.js"></script> 
+<script src='js/jquery.slimscroll.min.js'></script> 
+
 <!-- Modernizr --> 
-<script src="js/modernizr.min.js"></script> 
+<script src='js/modernizr.min.js'></script> 
+
 <!-- Cookie --> 
-<script src="js/jquery.cookie.min.js"></script> 
+<script src='js/jquery.cookie.min.js'></script> 
+
 <!-- Endless --> 
 <script src="js/endless/endless_dashboard.js"></script> 
 <script src="js/endless/endless.js"></script>
-';
-?>
+</body>
+
+<!-- Mirrored from minetheme.com/Endless1.5.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Oct 2015 08:17:34 GMT -->
+</html>
