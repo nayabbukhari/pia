@@ -1,6 +1,6 @@
 <footer>
     <div class="row">
-      <div class="col-sm-6"> <span class="footer-brand"> <img style="margin-bottom:25px;" src="img/Probatio-Large.png" width="150px" height="45px"></span>
+      <div class="col-sm-6"> <span class="footer-brand"> <img style="margin-bottom:25px;" src="img/Probatio-Logos-3b copy.png" width="150px" height="45px"></span>
         <p class="no-margin"> &copy; 2016 <strong>Probatio Insurance Application </strong>. ALL Rights Reserved. </p>
       </div>
       <!-- /.col --> 

@@ -153,7 +153,7 @@ function myFunction() {
     <div class="">
      <div class="panel panel-default">
       <form class="no-margin" id="formValidate2" data-validate="parsley" method="post" action="control_client_records.php" name="client_record" enctype="multipart/form-data" novalidate>
-        <div class="panel-heading"><img style="width: 47px; margin-top: -13px; margin-bottom: -13px;" src="img/Deals.png"  />  CREATE NEW DEAL<span><a href="deals.php">Cancel</a></span></div>
+        <div class="panel-heading"><img style="width: 47px; margin-top: -13px; margin-bottom: -13px;" src="icons/Deals.png"  />  CREATE NEW DEAL<span><a href="deals.php">Cancel</a></span></div>
         <div class="col-md-6 col-md-offset-3">
         <?php if(isset($_GET['s'])){
 
@@ -509,7 +509,7 @@ $(document).ready(function(){
 
     var counter = 2;
 		
-    $("#addButton").click(function (){
+    $("#addButton").click(function () {
 				
 	if(counter>10){
             alert("Only 10 textboxes allow");
@@ -545,5 +545,7 @@ $(document).ready(function(){
 
 
 </body>
+
 <!-- Mirrored from minetheme.com/Endless1.5.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Oct 2015 08:17:34 GMT -->
+
 </html>

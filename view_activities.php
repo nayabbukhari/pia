@@ -1,60 +1,62 @@
-<?php
-if(isset($_REQUEST[session_name()])) {
-    // There is a session already available
-  }else{
-    //session_name('crc');
-    session_start();   
-    include("connection.php");
- }
-if(isset($_SESSION['user'])){
-    $user=$_SESSION['user'];
-    $role=$_SESSION['role'];
-    $client=$_GET['client'];
-}else{
-    header("location:index.php");
-}
-/////????????????***************************** Get user role  *******************????????????????????///////////////////////////
-//$query = mysqli_query($con,"select * from pia_login where email='".$user."'");
-//while($rows = mysqli_fetch_array($query) ){
-/**
-$users=get_records_sql("select * from pia_login where email='$user'");
-foreach ($users as $usr){
-        $role=$usr->role;
-		//echo $role;
-		}
-**/
-/////????????????***************************** Get user role  *******************????????????????????///////////////////////////
-$leads=get_records_sql("SELECT * FROM pia_leads WHERE FIND_IN_SET('Recall', status) and clientid='".$client."' order by date_time desc");
-//$query = mysqli_query($con,"SELECT * FROM pia_leads WHERE FIND_IN_SET('Recall', status) and clientid='".$client."' order by date_time desc") ;
-//while($roww = mysqli_fetch_array($query)){
-foreach($leads AS $lead){    
-        $name=$lead->firstname;
-		//echo $name;
-		$agent=$lead->agent_name;
-        $clientid=$lead->clientid;
-        $email=$lead->email;
-        $prospect_owner=$lead->prospect_owner;
-        $status=$lead->status;
-        $section_name=$lead->section_name;
-    }
-echo    '<head>
-        <meta charset="utf-8">
-        <title>Probatio Admin</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome-->
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <!-- Pace -->
-        <link href="css/pace.css" rel="stylesheet">
-        <!-- Datatable -->
-        <link href="css/jquery.dataTables_themeroller.css" rel="stylesheet">
-        <!-- Endless -->
-        <link href="css/endless.min.css" rel="stylesheet">
-        <link href="css/endless-skin.css" rel="stylesheet">
-        <style>
+					<?php
+					session_start();
+					$user=$_SESSION['user'];
+					if(!isset($user))
+					{
+					header("location:index.php");
+					}
+					include("connection.php");
+					/////????????????***************************** Get user role  *******************????????????????????///////////////////////////
+					$user=$_SESSION['user'];
+					$query = mysqli_query($con,"select * from pia_login where email='".$user."'") ;
+					while($rows = mysqli_fetch_array($query) ) 
+					
+					{
+					$role=$rows['role'];
+					//echo $role;
+					}
+					$client=$_GET['client'];
+					/////????????????***************************** Get user role  *******************????????????????????///////////////////////////
+					
+					$query = mysqli_query($con,"SELECT * FROM pia_leads WHERE FIND_IN_SET('Recall', status) and clientid='".$client."' order by date_time desc") ;
+					while($roww = mysqli_fetch_array($query) ) {
+					$name=$roww['firstname'];
+					//echo $name;
+					$agent=$roww['agent_name'];
+                            $clientid=$roww['clientid'];
+                            $email=$roww['email'];
+                            $prospect_owner=$roww['prospect_owner'];
+                            $status=$roww['status'];
+                            $section_name=$roww['section_name'];
+					}
+					?> 
+                	<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from minetheme.com/Endless1.5.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Oct 2015 08:16:52 GMT -->
+<head>
+<meta charset="utf-8">
+<title>Probatio Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Font Awesome-->
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Pace -->
+	<link href="css/pace.css" rel="stylesheet">
+	
+	<!-- Datatable -->
+	<link href="css/jquery.dataTables_themeroller.css" rel="stylesheet">
+	
+	<!-- Endless -->
+	<link href="css/endless.min.css" rel="stylesheet">
+	<link href="css/endless-skin.css" rel="stylesheet">
+  <style>
   .btn.btn-default.dropdown-toggle {
     border-radius: 25px;
 	
@@ -119,74 +121,83 @@ margin-top: 5px;
 
 <body class="overflow-hidden">
 <!-- Overlay Div -->
-  <!--___________________________overlay_________________________-->';
+  <!--___________________________overlay_________________________-->
+  <?php include("overlay.php"); ?>
+  <!--___________________________.overlay________________________-->
 
-include("overlay.php");
-echo    '<!--___________________________.overlay________________________-->
-        <!-- /theme-setting -->
-        <div id="wrapper" class="preload">
-        <!--___________________________topbar_________________________-->';
-include("topbar.php");
-echo    '<!--___________________________.topbar________________________-->
-        <!-- /top-nav-->
-        <!--___________________________left sidebar_________________________-->';
-include("leftsidebar.php");
-echo    '<!--___________________________.left sidebar________________________-->
-        <div id="main-container">
-        <div id="breadcrumb">
-        <ul class="breadcrumb">
+
+<!-- /theme-setting -->
+
+<div id="wrapper" class="preload">
+  <!--___________________________topbar_________________________-->
+  <?php include("topbar.php"); ?>
+  <!--___________________________.topbar________________________-->
+  
+  <!-- /top-nav-->
+  
+  <!--___________________________left sidebar_________________________-->
+  <?php include("leftsidebar.php"); ?>
+  <!--___________________________.left sidebar________________________-->
+  
+  <div id="main-container">
+    <div id="breadcrumb">
+      <ul class="breadcrumb">
         <li><i class="fa fa-home"></i><a href="dashboard.php"> Home</a></li>
         <li class="active">Activities</li>
-        <li class="active">';
-        $page=basename($_SERVER['PHP_SELF']); 
-        $pa=explode(".", $page);		//echo $pa[0];
-echo    '</li>
-        </ul>
-        </div>
-        <!-- /breadcrumb--><!-- /main-header --><!-- /grey-container -->
-        <div class="clearfix"></div>
-        <div class="clearfix"></div>
-        <div class="panel panel-default table-responsive">
-        <div class="panel-heading" style="text-align: center; font-size: 24px;"><strong>		Activities     </strong>	</div>
-        <div class="padding-md">
-		<div class="row">
-		<div class="col-md-12">
-		<div class="panel panel-default">
-        <br/>
-        <div class="input-group-btn">
-        <ul class="dropdown-menu new" style="display: block;">
-        <li><a href="#add_activity" role="button" data-toggle="modal" >Add Activity</a></li>
-        </ul>
-        </div><!-- /btn-group -->';
-//echo "SELECT * FROM pia_leads WHERE FIND_IN_SET('Recall', status) and clientid='".$client."' order by date_time desc";
-echo    '<table class="table table-striped" id="dataTable">
-		<thead>
-		<tr>
-		<th width="58">Client Id</th>
-		<th width="91">Date Created</th>
-		<th width="61">Due date</th>
-		<th width="49">Subject</th>
-		<th width="66">Type</th>
-		<th width="114" >&nbsp;</th>
-		</tr>
-		</thead>
-		<tbody>';
+                        <li class="active"><?php $page=basename($_SERVER['PHP_SELF']); $pa=explode(".", $page);		//echo $pa[0]; ?></li>
 
-@session_start();
-$_SESSION['key'] = md5(mt_rand()); 
+      </ul>
+    </div>
+    <!-- /breadcrumb--><!-- /main-header --><!-- /grey-container -->
+     <div class="clearfix"></div>
+    <div class="clearfix"></div>
+                                <div class="panel panel-default table-responsive">
+                                <div class="panel-heading" style="text-align: center; font-size: 24px;"><strong>		Activities     </strong>	</div>
+                                
+                              <div class="padding-md">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
 
-$query = mysqli_query($con,"select * from pia_activities where clientid='".$client."' and not type='notes' order by date_time desc") ;
-    while($row = mysqli_fetch_array($query) ) {
-echo    '<tr>
-         <td><a href="#" title="Edit"><?php echo $row['clientid']; ?></a></td>
-         <td><a href="#" title="Edit"><?php echo $row['date_time']; ?></a></td>
-         <td><a href="#" title="Edit"><?php echo $row['due_date']; ?></a></td>
-         <td><a href="#" title="Edit"><?php echo $row['Subject']; ?></a></td>
-         <td><a href="#" title="Edit"><?php echo $row['type']; ?></a></td>
-         <td style="text-align: right;">';
+<br/>
+ <div class="input-group-btn">
+                        <ul class="dropdown-menu new" style="display: block;">
+                        <li><a href="#add_activity" role="button" data-toggle="modal" >Add Activity</a></li>
+                        </ul>
+                        </div><!-- /btn-group -->
+<?php //echo "SELECT * FROM pia_leads WHERE FIND_IN_SET('Recall', status) and clientid='".$client."' order by date_time desc";?>
+	<table class="table table-striped" id="dataTable">
+							<thead>
+								<tr>
+									<th width="58">Client Id</th>
+								  <th width="91">Date Created</th>
+								  <th width="61">Due date</th>
+								  <th width="49">Subject</th>
+								  <th width="66">Type</th>
+								  <th width="114" >&nbsp;</th>
+							  </tr>
+							</thead>
+							<tbody>
+							<?php 
+							include("connection.php");
+                            @session_start();
+                            $_SESSION['key'] = md5(mt_rand()); 
+							
+                            $query = mysqli_query($con,"select * from pia_activities where clientid='".$client."' and not type='notes' order by date_time desc") ;
+                            while($row = mysqli_fetch_array($query) ) {
+                            
 
-/*if($role=='AGENTS' || $role=='SUPERVISORS'){*/
-echo    '<a href="#edit<?php echo $row['id']; ?>" role="button" data-toggle="modal" class="btn btn-sm btn-success check"><i class="fa fa-edit"></i> Edit</a><?php //} else { ?>&nbsp;&nbsp; <a  href="#delete<?php echo $row['id']; ?>" style="padding-top: 5px; padding-bottom: 5px;" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Clear</a> <?php //} ?>               </td>
+						?>
+
+                <tr>
+                <td><a href="#" title="Edit"><?php echo $row['clientid']; ?></a></td>
+                <td><a href="#" title="Edit"><?php echo $row['date_time']; ?></a></td>
+                <td><a href="#" title="Edit"><?php echo $row['due_date']; ?></a></td>
+                <td><a href="#" title="Edit"><?php echo $row['Subject']; ?></a></td>
+                <td><a href="#" title="Edit"><?php echo $row['type']; ?></a></td>
+           
+                <td style="text-align: right;">
+                               <?php /*if($role=='AGENTS' || $role=='SUPERVISORS'){*/?> <a href="#edit<?php echo $row['id']; ?>" role="button" data-toggle="modal" class="btn btn-sm btn-success check"><i class="fa fa-edit"></i> Edit</a><?php //} else { ?>&nbsp;&nbsp; <a  href="#delete<?php echo $row['id']; ?>" style="padding-top: 5px; padding-bottom: 5px;" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Clear</a> <?php //} ?>               </td>
                 </tr>
                 
                 
